@@ -2,11 +2,9 @@ name: wangzi.uk网站签到
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ main ]
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '0 1 * * *'
   watch:
     types: started
 
