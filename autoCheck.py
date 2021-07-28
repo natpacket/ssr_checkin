@@ -69,7 +69,23 @@ def main(a, b):
 
 
 if __name__ == '__main__':
-    main('', '')
+    email = input('邮箱：')
+    passwd = input('密码：')
+    # with open(file='./user.json', encoding='utf-8') as f:
+    #     data = json.loads(f.read())
+    # email = data.get('email')
+    # passwd = data.get('passwd')
+    # 登录
+    url = "https://wangzi.uk/auth/login"
+    data = {"email": email, "passwd": passwd, "code": "", "remember_me": "week"}
+    # wangzi.uk签到参数
+    checkUrl = "https://wangzi.uk/user/checkin"
+    cookie = login(url, data)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0",
+        "Cookie": cookie
+    }
+    check(checkUrl, headers)
     # data = {"a":"b"}
     # res = ss.post(url='http://httpbin.org/post',data=data,proxies=proxies,verify=False)
     # print(res.text)
