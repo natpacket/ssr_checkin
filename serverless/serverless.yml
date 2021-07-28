@@ -19,5 +19,5 @@ inputs:
   events: # 触发器配置
     - timer: # 定时触发器
         parameters:
-          cronExpression: '* 30 9 * * * *'
+          cronExpression: '0 30 9 * * * *'
           enable: true
