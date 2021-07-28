@@ -3,8 +3,8 @@ name: wangzi.uk网站签到
 on:
   push:
     branches: [ main ]
-  schedule:
-    - cron: '0 1 * * *'
+#  schedule:
+#    - cron: '0 1 * * *'
   watch:
     types: started
 

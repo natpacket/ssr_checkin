@@ -1,0 +1,29 @@
+name: 部署腾讯云函数
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+      - name: 部署腾讯云函数
+        env:
+          USER: ${{ secrets.USER_JSON }}
+          SERVERLESS_PLATFORM_VENDOR: tencent
+          TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+          TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+        run: |
+          echo "$USER" > ./code.json
+          sudo chmod +x ./serverless/deploy.sh
+          bash ./serverless/deploy.sh
+
+      - name: Delete Workflow Runs # 删除执行日志
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 1
+          keep_minimum_runs: 0

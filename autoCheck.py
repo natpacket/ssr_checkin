@@ -5,6 +5,7 @@ timeout = 20
 
 ss = requests.Session()
 
+
 # 登录获取cookie
 def login(url, data):
     # url="https://wangzi.uk/user"
@@ -27,7 +28,8 @@ def login(url, data):
         print(res.cookies.get('expire_in'))
         print(res.cookies.get('uid'))
         print(res.cookies.get('key'))
-        cookie = 'expire_in={}; uid={}; key={}'.format(res.cookies.get('expire_in'),res.cookies.get('uid'),res.cookies.get('key'))
+        cookie = 'expire_in={}; uid={}; key={}'.format(res.cookies.get('expire_in'), res.cookies.get('uid'),
+                                                       res.cookies.get('key'))
         return cookie
     except Exception as e:
         print(e)
@@ -46,9 +48,13 @@ def check(url, headers):
         print(e.__traceback__.tb_lineno)
 
 
-def main():
-    email = input('邮箱：')
-    passwd = input('密码：')
+def main(a, b):
+    # email = input('邮箱：')
+    # passwd = input('密码：')
+    with open(file='./user.json', encoding='utf-8') as f:
+        data = json.loads(f.read())
+    email = data.get('email')
+    passwd = data.get('passwd')
     # 登录
     url = "https://wangzi.uk/auth/login"
     data = {"email": email, "passwd": passwd, "code": "", "remember_me": "week"}
@@ -59,10 +65,11 @@ def main():
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0",
         "Cookie": cookie
     }
-    check(checkUrl,headers)
+    check(checkUrl, headers)
+
 
 if __name__ == '__main__':
-    main()
+    main('', '')
     # data = {"a":"b"}
     # res = ss.post(url='http://httpbin.org/post',data=data,proxies=proxies,verify=False)
     # print(res.text)
