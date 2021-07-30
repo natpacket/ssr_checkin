@@ -78,7 +78,7 @@
 
 - 点击star,即可运行任务
 - 进入 `Actions` --> `wangzi.uk网站签到 `, 点击右边的 `Run workflow` 即可运行签到
-- 进入`/.github/workflows/run.yml`自行配置定时任务
+- 进入`ssr_checkin/.github/workflows/run.yml`自行配置定时任务
 
 # 同步上游代码
 
