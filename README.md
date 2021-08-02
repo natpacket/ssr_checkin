@@ -48,7 +48,7 @@
 |:---:|:---:|
 |TENCENT_SECRET_ID | 腾讯云用户 SecretID|
 |TENCENT_SECRET_KEY | 腾讯云账户 SecretKey|
-|USER_JSON | config.json 中内容|
+|USER_JSON | user.json 中内容|
 
 ### 4.部署
 
