@@ -1,4 +1,8 @@
 {
+  "corpid": "xxxx",
+  "secret": "xxxx",
+  "agentid": "xxxx",
+  "touser": "xxxx",
   "email": "xxxx",
   "passwd": "xxxxx"
 }
